@@ -25,7 +25,9 @@ dependencies = [
 # The real LocateAnything backend (heavy: needs torch + a GPU ideally).
 model = [
     "torch>=2.1",
-    "transformers>=4.44",
+    # LocateAnything's remote code targets this exact version; newer ones
+    # break (_check_and_adjust_attn_implementation signature changed).
+    "transformers==4.57.1",
     "accelerate>=0.30",
     # Required by LocateAnything's remote modeling code.
     "decord>=0.6",
