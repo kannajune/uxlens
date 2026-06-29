@@ -17,6 +17,7 @@ the integer range [0, 1000].
 
 from __future__ import annotations
 
+import os
 import re
 
 from uxlens.types import Box
@@ -34,6 +35,7 @@ class LocateAnythingLocator:
         device: str | None = None,
         max_new_tokens: int = 512,
         max_image_side: int = 1024,
+        load_in_4bit: bool | None = None,
     ) -> None:
         try:
             import torch
@@ -53,18 +55,35 @@ class LocateAnythingLocator:
         # normalized 0..1000, so downscaling does not affect box accuracy.
         self.max_image_side = max_image_side
 
+        # 4-bit quantization makes the 3B model fit a free T4 (~2.5GB vs ~6GB).
+        # Enable via arg or the UXLENS_LOAD_4BIT=1 env var.
+        if load_in_4bit is None:
+            load_in_4bit = os.environ.get("UXLENS_LOAD_4BIT", "") in ("1", "true", "True")
+
         self.tokenizer = AutoTokenizer.from_pretrained(model, trust_remote_code=True)
         self.processor = AutoProcessor.from_pretrained(model, trust_remote_code=True)
-        self.model = (
-            AutoModel.from_pretrained(
-                model,
-                torch_dtype=torch.bfloat16,
-                trust_remote_code=True,
-                low_cpu_mem_usage=True,  # avoid an fp32 spike during load
-            )
-            .to(self.device)
-            .eval()
+
+        load_kwargs = dict(
+            torch_dtype=torch.bfloat16,
+            trust_remote_code=True,
+            low_cpu_mem_usage=True,  # avoid an fp32 spike during load
         )
+        if load_in_4bit:
+            from transformers import BitsAndBytesConfig
+
+            load_kwargs["quantization_config"] = BitsAndBytesConfig(
+                load_in_4bit=True,
+                bnb_4bit_compute_dtype=torch.bfloat16,
+                bnb_4bit_quant_type="nf4",
+                bnb_4bit_use_double_quant=True,
+            )
+            load_kwargs["device_map"] = self.device
+            self.model = AutoModel.from_pretrained(model, **load_kwargs).eval()
+        else:
+            self.model = (
+                AutoModel.from_pretrained(model, **load_kwargs).to(self.device).eval()
+            )
+
         if self.device == "cuda":
             torch.cuda.empty_cache()
 

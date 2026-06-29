@@ -32,6 +32,8 @@ model = [
     # Required by LocateAnything's remote modeling code.
     "decord>=0.6",
     "lmdb>=1.4",
+    # Enables 4-bit loading so the model fits a free T4 (set UXLENS_LOAD_4BIT=1).
+    "bitsandbytes>=0.43",
 ]
 dev = [
     "pytest>=8.0",
