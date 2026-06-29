@@ -3,7 +3,7 @@
 Model card: https://huggingface.co/nvidia/LocateAnything-3B
 Project:    https://research.nvidia.com/labs/lpr/locate-anything/
 
-This is intentionally thin and isolated so the rest of uxlint never has
+This is intentionally thin and isolated so the rest of uxlens never has
 to import torch. It is loaded only when you pass `--backend locate-anything`.
 
 NOTE: the exact processor/output API of the published checkpoint may differ
@@ -13,7 +13,7 @@ to the real model card once you wire it up — everything else is stable.
 
 from __future__ import annotations
 
-from uxlint.types import Box
+from uxlens.types import Box
 
 DEFAULT_MODEL = "nvidia/LocateAnything-3B"
 
@@ -26,7 +26,7 @@ class LocateAnythingLocator:
         except ImportError as exc:  # pragma: no cover - import-guard
             raise RuntimeError(
                 "The LocateAnything backend needs the model extras. Install with:\n"
-                "    pip install 'uxlint[model]'"
+                "    pip install 'uxlens[model]'"
             ) from exc
 
         self._torch = torch

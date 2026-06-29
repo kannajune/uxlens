@@ -13,12 +13,12 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from uxlint.audit import audit
-from uxlint.rules.cta import CTA_QUERY
-from uxlint.rules.forms import FIELD_QUERY
-from uxlint.rules.trust import TRUST_QUERY
-from uxlint.report import print_summary, write_annotated_image, write_json
-from uxlint.types import Box
+from uxlens.audit import audit
+from uxlens.rules.cta import CTA_QUERY
+from uxlens.rules.forms import FIELD_QUERY
+from uxlens.rules.trust import TRUST_QUERY
+from uxlens.report import print_summary, write_annotated_image, write_json
+from uxlens.types import Box
 
 DOCS = Path(__file__).resolve().parent.parent / "docs"
 

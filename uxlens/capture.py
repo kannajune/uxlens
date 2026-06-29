@@ -40,7 +40,7 @@ def capture(
     except ImportError as exc:  # pragma: no cover - import-guard
         raise RuntimeError(
             "Playwright is not installed. Run:\n"
-            "    pip install uxlint && playwright install chromium"
+            "    pip install uxlens && playwright install chromium"
         ) from exc
 
     if viewport not in VIEWPORTS:

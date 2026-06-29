@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Protocol, runtime_checkable
 
-from uxlint.types import Box
+from uxlens.types import Box
 
 
 @runtime_checkable

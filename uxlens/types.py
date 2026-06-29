@@ -1,4 +1,4 @@
-"""Core data types shared across uxlint.
+"""Core data types shared across uxlens.
 
 Kept dependency-free on purpose so rules and reporting can import these
 without pulling in Playwright or torch.

@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from uxlint.rules.base import Rule, RuleContext
-from uxlint.types import Finding, Severity
+from uxlens.rules.base import Rule, RuleContext
+from uxlens.types import Finding, Severity
 
 FIELD_QUERY = "form input field"
 

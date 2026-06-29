@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "uxlint"
+name = "uxlens"
 version = "0.1.0"
 description = "A linter for your landing pages — screenshot a URL, locate the UX elements, and get ranked conversion (CRO) findings."
 readme = "README.md"
@@ -33,11 +33,11 @@ dev = [
 ]
 
 [project.scripts]
-uxlint = "uxlint.cli:main"
+uxlens = "uxlens.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/kannajune/uxlint"
-Issues = "https://github.com/kannajune/uxlint/issues"
+Homepage = "https://github.com/kannajune/uxlens"
+Issues = "https://github.com/kannajune/uxlens/issues"
 
 [tool.hatch.build.targets.wheel]
-packages = ["uxlint"]
+packages = ["uxlens"]

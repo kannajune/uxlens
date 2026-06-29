@@ -4,17 +4,17 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from uxlint.capture import capture
-from uxlint.locator import get_locator
-from uxlint.locator.base import Locator
-from uxlint.rules import ALL_RULES, all_queries
-from uxlint.rules.base import RuleContext
-from uxlint.types import AuditResult
+from uxlens.capture import capture
+from uxlens.locator import get_locator
+from uxlens.locator.base import Locator
+from uxlens.rules import ALL_RULES, all_queries
+from uxlens.rules.base import RuleContext
+from uxlens.types import AuditResult
 
 
 def audit(
     url: str,
-    out_dir: str | Path = "uxlint-report",
+    out_dir: str | Path = "uxlens-report",
     viewport: str = "desktop",
     backend: str | Locator = "mock",
 ) -> AuditResult:

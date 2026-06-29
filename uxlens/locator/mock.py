@@ -11,7 +11,7 @@ import hashlib
 
 from PIL import Image
 
-from uxlint.types import Box
+from uxlens.types import Box
 
 
 class MockLocator:

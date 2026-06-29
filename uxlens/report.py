@@ -7,7 +7,7 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-from uxlint.types import AuditResult, Severity
+from uxlens.types import AuditResult, Severity
 
 SEVERITY_COLOR = {
     Severity.CRITICAL: (220, 38, 38),   # red
@@ -60,7 +60,7 @@ def _load_font(size: int):
 def print_summary(result: AuditResult) -> None:
     """Human-friendly terminal summary."""
     icons = {Severity.CRITICAL: "✗", Severity.WARNING: "!", Severity.INFO: "i"}
-    print(f"\n  uxlint report for {result.url}")
+    print(f"\n  uxlens report for {result.url}")
     print(f"  viewport: {result.viewport}   score: {result.score}/100\n")
     if not result.findings:
         print("  ✓ No issues found. Nice.\n")

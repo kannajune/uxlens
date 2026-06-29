@@ -5,10 +5,10 @@ the resulting boxes to emit Findings. Add a new heuristic by writing a Rule
 and registering it in `ALL_RULES`.
 """
 
-from uxlint.rules.base import Rule, RuleContext
-from uxlint.rules.cta import PrimaryCtaAboveFold, SinglePrimaryCta, CtaTapTarget
-from uxlint.rules.forms import FormFriction
-from uxlint.rules.trust import TrustSignalsPresent
+from uxlens.rules.base import Rule, RuleContext
+from uxlens.rules.cta import PrimaryCtaAboveFold, SinglePrimaryCta, CtaTapTarget
+from uxlens.rules.forms import FormFriction
+from uxlens.rules.trust import TrustSignalsPresent
 
 # The default rule set, ordered roughly by impact.
 ALL_RULES: list[Rule] = [

@@ -1,4 +1,4 @@
-"""Command-line interface: `uxlint audit <url>`."""
+"""Command-line interface: `uxlens audit <url>`."""
 
 from __future__ import annotations
 
@@ -6,22 +6,22 @@ import argparse
 import sys
 from pathlib import Path
 
-from uxlint import __version__
-from uxlint.audit import audit
-from uxlint.report import print_summary, write_annotated_image, write_json
+from uxlens import __version__
+from uxlens.audit import audit
+from uxlens.report import print_summary, write_annotated_image, write_json
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
-        prog="uxlint",
+        prog="uxlens",
         description="Lint a landing page for conversion (CRO) issues.",
     )
-    parser.add_argument("--version", action="version", version=f"uxlint {__version__}")
+    parser.add_argument("--version", action="version", version=f"uxlens {__version__}")
     sub = parser.add_subparsers(dest="command", required=True)
 
     a = sub.add_parser("audit", help="Audit a URL")
     a.add_argument("url", help="The page URL to audit")
-    a.add_argument("-o", "--out", default="uxlint-report", help="Output directory")
+    a.add_argument("-o", "--out", default="uxlens-report", help="Output directory")
     a.add_argument(
         "--viewport", choices=["desktop", "mobile"], default="desktop"
     )

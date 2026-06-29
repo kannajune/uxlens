@@ -1,10 +1,10 @@
 """Unit tests for the rule engine — run without a browser or a model."""
 
-from uxlint.rules.base import RuleContext
-from uxlint.rules.cta import CTA_QUERY, PrimaryCtaAboveFold, SinglePrimaryCta, CtaTapTarget
-from uxlint.rules.forms import FIELD_QUERY, FormFriction
-from uxlint.rules.trust import TRUST_QUERY, TrustSignalsPresent
-from uxlint.types import Box, Severity
+from uxlens.rules.base import RuleContext
+from uxlens.rules.cta import CTA_QUERY, PrimaryCtaAboveFold, SinglePrimaryCta, CtaTapTarget
+from uxlens.rules.forms import FIELD_QUERY, FormFriction
+from uxlens.rules.trust import TRUST_QUERY, TrustSignalsPresent
+from uxlens.types import Box, Severity
 
 
 def ctx(located, viewport="desktop", w=1366, h=768):
