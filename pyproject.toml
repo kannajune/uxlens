@@ -27,6 +27,9 @@ model = [
     "torch>=2.1",
     "transformers>=4.44",
     "accelerate>=0.30",
+    # Required by LocateAnything's remote modeling code.
+    "decord>=0.6",
+    "lmdb>=1.4",
 ]
 dev = [
     "pytest>=8.0",
